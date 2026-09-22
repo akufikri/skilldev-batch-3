@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POS SYSTEM CASHIER - Transaksi</title>
+  </head>
+  <body>
+    <form action="/proses-transaksi" method="POST">
+      <div>
+        <label for="nama-pelanggan">Nama pelanggan</label>
+        <input
+          type="text"
+          name="customer_name"
+          id="nama-pelanggan"
+          placeholder="Contoh: budi"
+        />
+      </div>
+      <div>
+        <label for="jumlah-item">Jumlah Kopi:</label>
+        <input type="number" name="qty" id="jumlah-item" min="10" value="3" />
+      </div>
+      <div>
+        <label for="metode-bayar">Metode Pembayaran:</label>
+        <select name="payment_method" id="metode-bayar">
+          <option value="cash">Uang Tunai (CASH)</option>
+          <option value="qris">QRIS DIGITAL</option>
+          <option value="debit">Kartu Debit</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">Selesaikan Transaksi</button>
+      </div>
+    </form>
+  </body>
+</html>
