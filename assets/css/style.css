@@ -1,0 +1,79 @@
+* {
+  margin: 0px;
+  font-family: arial;
+}
+
+h1 {
+  color: white;
+  font-size: 32px;
+}
+
+.judul-artikel {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.navigasi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3c0505;
+  padding: 10px;
+}
+
+.navigasi nav {
+  text-align: center;
+}
+
+.btn {
+  background-color: darkgreen;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.link {
+  color: white;
+}
+
+main {
+  text-align: center;
+  padding-top: 20px;
+  max-width: 50%;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+footer {
+  background-color: #3c0505;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.card {
+  background-color: antiquewhite;
+  padding: 12px;
+  border-radius: 8px;
+  height: auto;
+}
+.galery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 375px) {
+  main {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  .galery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+}
