@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   UploadedFiles,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ProductsService } from './products.service.js';
@@ -15,8 +16,12 @@ import { updateProductDto } from './dto/update-product.dto.js';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { StorageService } from '../storage/storage.service.js';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
+import { RolesGuard } from '../auth/guards/roles.guard.js';
+import { Roles } from '../auth/decorators/roles.decorator.js';
 
 @ApiTags('Products Managements') // 👈 Mengelompokkan semua rute produk ke dalam satu folder/grup di UI
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('products') // Mengatur rute dasar URL: http://localhost:3000/products
 export class ProductsController {
   constructor(
@@ -36,6 +41,7 @@ export class ProductsController {
   }
 
   @Post()
+  @Roles('ADMIN', 'MANAGER')
   @ApiOperation({
     summary: 'Create product',
     description: 'Add new product into pos system',

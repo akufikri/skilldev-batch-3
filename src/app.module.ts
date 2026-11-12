@@ -9,6 +9,9 @@ import { CategoriesModule } from './categories/categories.module.js';
 import { CacheModule } from '@nestjs/cache-manager';
 import { UsersModule } from './users/users.module.js';
 import { AuthModule } from './auth/auth.module.js';
+import { auditLogModule } from './audit-logs/audit-logs.module.js';
+import { AuditLogInterceptor } from './common/interceptors/audit-log.interceptor.js';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -32,8 +35,15 @@ import { AuthModule } from './auth/auth.module.js';
     CategoriesModule,
     UsersModule,
     AuthModule,
+    auditLogModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: AuditLogInterceptor,
+    },
+  ],
 })
 export class AppModule {}
